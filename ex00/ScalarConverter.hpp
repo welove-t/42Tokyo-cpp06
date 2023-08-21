@@ -9,16 +9,25 @@
 #define BLUE	"\e[0;34m" // Blue
 #define RESET 	"\e[0m"    // Reset
 
+enum LiteralType
+{
+	NO_TYPE,
+	CHAR_TYPE,
+	INT_TYPE,
+	FLOAT_TYPE,
+	DOUBLE_TYPE,
+};
 class ScalarConverter
 {
 	private:
-
+		static bool	isValidDecimal(const std::string& s, int end);
+		// static bool	isDouble(const std::string& literal);
+		// static bool	isFloat(const std::string& literal);
+		static bool	isInt(const std::string& literal);
+		static LiteralType checkLiteralType(const std::string& literal);
 	public:
-		ScalarConverter();
-		~ScalarConverter();
+		static void	convert(const std::string& literal);
 
-		ScalarConverter(const ScalarConverter& rhs);
-		ScalarConverter& operator=(const ScalarConverter& rhs);
 };
 
 #endif
