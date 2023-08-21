@@ -15,6 +15,7 @@ void	ScalarConverter::convert(const std::string& literal)
 			printChar(c);
 			printInt(static_cast<int>(c));
 			printFloat(static_cast<float>(c));
+			printDouble(static_cast<double>(c));
 			break;
 		case INT_TYPE:
 			std::cout << "INT_TYPE" << std::endl;
@@ -106,4 +107,14 @@ void	ScalarConverter::printFloat(float f)
     else if (ft_isinf(f))
 		 std::cout << "float: " << (f < 0 ? "-inff" : "inff") << std::endl;
     else std::cout << "float: " << f << "f" << std::endl;
+}
+
+void	ScalarConverter::printDouble(double d)
+{
+    if (ft_isnan(d))
+		std::cout << "double: nan" << std::endl;
+    else if (ft_isinf(d))
+		std::cout << "double: " << (d < 0 ? "-inf" : "inf") << std::endl;
+    else
+		std::cout << "double: " << d << std::endl;
 }
