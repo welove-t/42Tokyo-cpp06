@@ -13,6 +13,7 @@ void	ScalarConverter::convert(const std::string& literal)
 			// std::cout << "CHAR_TYPE" << std::endl;
 			c = literal[0];
 			printChar(c);
+			printInt(static_cast<int>(c));
 			break;
 		case INT_TYPE:
 			std::cout << "INT_TYPE" << std::endl;
@@ -62,31 +63,6 @@ bool	ScalarConverter::isInt(const std::string& literal)
     return true;
 }
 
-// bool	ScalarConverter::isFloat(const std::string& literal)
-// {
-// 	if (!(literal.back() == 'f'))
-// 		return false;
-// 	std::istringstream iss(literal);
-// 	float f;
-
-// 	iss >> f;
-
-// 	// eofbitをチェックして文字列の終端に到達したか確認
-// 	// failbitやbadbitをチェックして変換に失敗していないか確認
-// 	return !(iss.fail() || !iss.eof());
-// }
-
-// bool	ScalarConverter::isDouble(const std::string& literal)
-// {
-// 	std::istringstream iss(literal);
-// 	double d;
-// 	iss >> d;
-
-// 	// eofbitをチェックして文字列の終端に到達したか確認
-// 	// failbitやbadbitをチェックして変換に失敗していないか確認
-// 	return !(iss.fail() || !iss.eof());
-// }
-
 LiteralType ScalarConverter::checkLiteralType(const std::string& literal)
 {
 	if (literal.empty())
@@ -111,6 +87,13 @@ void	ScalarConverter::printChar(char c)
 	if (isprint(c))
 		std::cout << "char: " << "'" << c << "'" << std::endl;
 	else
-		std::cout << "char: " << "impossible" << std::endl;
+		std::cout << "char: " << "Non displayable" << std::endl;
 
+}
+
+void	ScalarConverter::printInt(int i)
+{
+	if (i < std::numeric_limits<char>::min() || i > std::numeric_limits<char>::max())
+		std::cout << "int: impossible" << std::endl;
+	else std::cout << "int: " << i << std::endl;
 }
