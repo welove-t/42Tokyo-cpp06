@@ -1,8 +1,8 @@
 
-NAME		= main
+NAME		= convert
 CXX 		= c++
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98
-FILES		= main Bureaucrat
+FILES		= main ScalarConverter
 SRCS		= $(FILES:=.cpp)
 OBJS_DIR	= .objs
 OBJS		= $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
