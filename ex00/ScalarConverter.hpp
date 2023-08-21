@@ -29,6 +29,11 @@ class ScalarConverter
 		static void	printInt(int i);
 		static void	printFloat(float f);
 		static void	printDouble(double d);
+
+		static bool ft_isnan(float x) { return x != x; }
+		static bool ft_isnan(double x) { return x != x; }
+		static bool ft_isinf(float x) { return !ft_isnan(x) && ft_isnan(x - x); }
+		static bool ft_isinf(double x) { return !ft_isnan(x) && ft_isnan(x - x); }
 	public:
 		static void	convert(const std::string& literal);
 

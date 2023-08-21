@@ -14,6 +14,7 @@ void	ScalarConverter::convert(const std::string& literal)
 			c = literal[0];
 			printChar(c);
 			printInt(static_cast<int>(c));
+			printFloat(static_cast<float>(c));
 			break;
 		case INT_TYPE:
 			std::cout << "INT_TYPE" << std::endl;
@@ -96,4 +97,13 @@ void	ScalarConverter::printInt(int i)
 	if (i < std::numeric_limits<char>::min() || i > std::numeric_limits<char>::max())
 		std::cout << "int: impossible" << std::endl;
 	else std::cout << "int: " << i << std::endl;
+}
+
+void	ScalarConverter::printFloat(float f)
+{
+    if (ft_isnan(f))
+		std::cout << "float: nanf" << std::endl;
+    else if (ft_isinf(f))
+		 std::cout << "float: " << (f < 0 ? "-inff" : "inff") << std::endl;
+    else std::cout << "float: " << f << "f" << std::endl;
 }
