@@ -20,11 +20,15 @@ enum LiteralType
 class ScalarConverter
 {
 	private:
-		static bool	isValidDecimal(const std::string& s, int end);
+		static bool	isValidDecimal(const std::string& literal, int end);
 		// static bool	isDouble(const std::string& literal);
 		// static bool	isFloat(const std::string& literal);
 		static bool	isInt(const std::string& literal);
 		static LiteralType checkLiteralType(const std::string& literal);
+		static void	printChar(char c);
+		// static void	printInt(const std::string& literal);
+		// static void	printFloat(const std::string& literal);
+		// static void	printDouble(const std::string& literal);
 	public:
 		static void	convert(const std::string& literal);
 

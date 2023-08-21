@@ -3,13 +3,16 @@
 void	ScalarConverter::convert(const std::string& literal)
 {
 	LiteralType type = checkLiteralType(literal);
+	char c;
 	switch (type)
 	{
 		case NO_TYPE:
 			std::cout << "NO" << std::endl;
 			break;
 		case CHAR_TYPE:
-			std::cout << "CHAR_TYPE" << std::endl;
+			// std::cout << "CHAR_TYPE" << std::endl;
+			c = literal[0];
+			printChar(c);
 			break;
 		case INT_TYPE:
 			std::cout << "INT_TYPE" << std::endl;
@@ -101,4 +104,13 @@ LiteralType ScalarConverter::checkLiteralType(const std::string& literal)
 	if (isValidDecimal(literal, 0))
 		return DOUBLE_TYPE;
 	return NO_TYPE;
+}
+
+void	ScalarConverter::printChar(char c)
+{
+	if (isprint(c))
+		std::cout << "char: " << "'" << c << "'" << std::endl;
+	else
+		std::cout << "char: " << "impossible" << std::endl;
+
 }
