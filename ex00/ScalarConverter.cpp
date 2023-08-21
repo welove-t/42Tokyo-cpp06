@@ -10,16 +10,25 @@ void	ScalarConverter::convert(const std::string& literal)
 			std::cout << "NO" << std::endl;
 			break;
 		case CHAR_TYPE:
-			// std::cout << "CHAR_TYPE" << std::endl;
+		{
 			c = literal[0];
 			printChar(c);
 			printInt(static_cast<int>(c));
 			printFloat(static_cast<float>(c));
 			printDouble(static_cast<double>(c));
 			break;
+		}
 		case INT_TYPE:
-			std::cout << "INT_TYPE" << std::endl;
+		{
+            std::istringstream iss(literal);
+            int i;
+            iss >> i;
+            printChar(static_cast<char>(i));
+            printInt(i);
+            printFloat(static_cast<float>(i));
+            printDouble(static_cast<double>(i));
 			break;
+		}
 		case FLOAT_TYPE:
 			std::cout << "FLOAT_TYPE" << std::endl;
 			break;
@@ -106,7 +115,7 @@ void	ScalarConverter::printFloat(float f)
 		std::cout << "float: nanf" << std::endl;
     else if (ft_isinf(f))
 		 std::cout << "float: " << (f < 0 ? "-inff" : "inff") << std::endl;
-    else std::cout << "float: " << f << "f" << std::endl;
+    else std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
 }
 
 void	ScalarConverter::printDouble(double d)
@@ -116,5 +125,5 @@ void	ScalarConverter::printDouble(double d)
     else if (ft_isinf(d))
 		std::cout << "double: " << (d < 0 ? "-inf" : "inf") << std::endl;
     else
-		std::cout << "double: " << d << std::endl;
+		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 }
