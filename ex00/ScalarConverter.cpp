@@ -20,13 +20,22 @@ void	ScalarConverter::convert(const std::string& literal)
 		}
 		case INT_TYPE:
 		{
-            std::istringstream iss(literal);
-            int i;
-            iss >> i;
-            printChar(static_cast<char>(i));
-            printInt(i);
-            printFloat(static_cast<float>(i));
-            printDouble(static_cast<double>(i));
+			try
+			{
+				int i = std::stoi(literal);
+				printChar(static_cast<char>(i));
+				printInt(i);
+				printFloat(static_cast<float>(i));
+				printDouble(static_cast<double>(i));
+			}
+			catch (const std::out_of_range& e)
+			{
+        		std::cout << RED << "The number is out of range for int." << RESET <<  std::endl;
+			}
+			catch (const std::invalid_argument& e)
+			{
+        		std::cout << RED << "Invalid integer input." << RESET << std::endl;
+			}
 			break;
 		}
 		case FLOAT_TYPE:
