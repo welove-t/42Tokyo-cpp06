@@ -14,7 +14,7 @@ class Base
 {
 	private:
 	public:
-		virtual ~Base();
+		virtual ~Base() {};
 
 };
 
