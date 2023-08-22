@@ -1,18 +1,23 @@
-#include "ScalarConverter.hpp"
+#include "Serialization.hpp"
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	if (argc != 2)
-	{
-		std::cerr << RED << "Usage: " << argv[0] << " <literal>" << RESET << std::endl;
-		return 1;
-	}
+	Data* data = new Data();
+	Serialization s;
 
-	ScalarConverter::convert(argv[1]);
+	data->s_data = "good data!";
+	data->i_data = 42;
+
+	std::cout << GREEN <<  "original\t:" <<  data << RESET << std::endl;
+	uintptr_t	ptr = s.serialize(data);
+	std::cout << "serialization\t:" << ptr << std::endl;
+	std::cout << GREEN "derialization\t:" << s.deserialize(ptr) << RESET << std::endl;
+
+	delete data;
 	return	0;
 }
 
 __attribute((destructor))
 static void destructor() {
-	system("leaks -q convert");
+	system("leaks -q main");
 }

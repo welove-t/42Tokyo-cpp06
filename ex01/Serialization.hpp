@@ -9,14 +9,15 @@
 #define BLUE	"\e[0;34m" // Blue
 #define RESET 	"\e[0m"    // Reset
 
+struct Data
+{
+	std::string s_data;
+	int			i_data;
+};
+
 class Serialization
 {
 	private:
-		struct Data
-		{
-			std::string s_data;
-			int			i_data;
-		};
 	public:
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
