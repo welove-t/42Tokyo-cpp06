@@ -191,3 +191,23 @@ void	ScalarConverter::printDouble(double d)
 	else
 		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 }
+
+bool ScalarConverter::ft_isnan(float x)
+{
+	return x != x;
+}
+
+bool ScalarConverter::ft_isnan(double x)
+{
+	return x != x;
+}
+
+bool ScalarConverter::ft_isinf(float x)
+{
+	return !ft_isnan(x) && ft_isnan(x - x);
+}
+
+bool ScalarConverter::ft_isinf(double x)
+{
+	return !ft_isnan(x) && ft_isnan(x - x);
+}
