@@ -44,7 +44,7 @@ void	ScalarConverter::convert(const std::string& literal)
 			{
 				float f = std::stof(literal);
 				printChar(static_cast<char>(f));
-				printInt(static_cast<float>(f));
+				printInt(static_cast<int>(f));
 				printFloat(f);
 				printDouble(static_cast<double>(f));
 			}
@@ -59,8 +59,25 @@ void	ScalarConverter::convert(const std::string& literal)
 			break;
 		}
 		case DOUBLE_TYPE:
-			std::cout << "DOUBLE_TYPE" << std::endl;
+		{
+			try
+			{
+				double d = std::stod(literal);
+				printChar(static_cast<char>(d));
+				printInt(static_cast<int>(d));
+				printFloat(static_cast<float>(d));
+				printDouble((d));
+			}
+			catch (const std::out_of_range& e)
+			{
+        		std::cout << RED << "The number is out of range for int." << RESET <<  std::endl;
+			}
+			catch (const std::invalid_argument& e)
+			{
+        		std::cout << RED << "Invalid float input." << RESET << std::endl;
+			}
 			break;
+		}
 		default:
 			break;
 	}
