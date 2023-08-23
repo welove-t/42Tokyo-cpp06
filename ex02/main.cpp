@@ -18,14 +18,14 @@ Base * generate(void)
 
 void identify(Base* p)
 {
-    if (dynamic_cast<A*>(p))
-        std::cout << GREEN << "A" << RESET << std::endl;
-    else if (dynamic_cast<B*>(p))
-        std::cout << GREEN  << "B" << RESET << std::endl;
-    else if (dynamic_cast<C*>(p))
-        std::cout << GREEN  << "C" << RESET << std::endl;
-    else
-        std::cout << RED << "Unknown type!" << RESET << std::endl;
+	if (dynamic_cast<A*>(p))
+		std::cout << GREEN << "A" << RESET << std::endl;
+	else if (dynamic_cast<B*>(p))
+		std::cout << GREEN  << "B" << RESET << std::endl;
+	else if (dynamic_cast<C*>(p))
+		std::cout << GREEN  << "C" << RESET << std::endl;
+	else
+		std::cout << RED << "Unknown type!" << RESET << std::endl;
 }
 
 int main(void)
