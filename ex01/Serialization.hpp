@@ -18,10 +18,11 @@ struct Data
 class Serialization
 {
 	private:
+		Serialization();
+		~Serialization();
 	public:
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
-
 };
 
 #endif
