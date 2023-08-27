@@ -28,12 +28,43 @@ void identify(Base* p)
 		std::cout << RED << "Unknown type!" << RESET << std::endl;
 }
 
+void identify(Base& p)
+{
+	try
+	{
+		A& a = dynamic_cast<A&>(p);
+		(void) a;
+		std::cout << GREEN << "A" << RESET << std::endl;
+		return ;
+	}
+	catch (const std::bad_cast&) {}
+	try
+	{
+		B& b = dynamic_cast<B&>(p);
+		(void) b;
+		std::cout << GREEN  << "B" << RESET << std::endl;
+		return ;
+	}
+	catch (const std::bad_cast&) {}
+	try
+	{
+		C& c= dynamic_cast<C&>(p);
+		(void) c;
+		std::cout << GREEN  << "C" << RESET << std::endl;
+		return ;
+	}
+	catch (const std::bad_cast&) {}
+	std::cout << RED << "Unknown type!" << RESET << std::endl;
+}
+
 int main(void)
 {
 	Base* base = generate();
 
-	std::cout << "generate type: " << std::flush;
+	std::cout << "(Base* p)generate type: " << std::flush;
 	identify(base);
+	std::cout << "(Base& p)generate type: " << std::flush;
+	identify(*base);
 
 	delete base;
 	return	0;
